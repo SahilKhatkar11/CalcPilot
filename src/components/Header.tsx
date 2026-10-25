@@ -24,6 +24,12 @@ export const Header: React.FC<HeaderProps> = ({
           alt="CalcPilot Logo"
           className="w-11 h-11 sm:w-12 sm:h-12 shrink-0 object-contain hover:scale-105 transition-transform duration-200 select-none"
           referrerPolicy="no-referrer"
+          onError={(e) => {
+            const fallbackSrc = `${import.meta.env.BASE_URL}logo.webp`;
+            if (e.currentTarget.src !== fallbackSrc) {
+              e.currentTarget.src = fallbackSrc;
+            }
+          }}
         />
 
         {/* Brand Text */}

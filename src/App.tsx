@@ -619,7 +619,11 @@ export const App: React.FC = () => {
             onClose={() => setIsHistoryOpen(false)}
             onClear={() => {
               setHistory([]);
-              localStorage.removeItem('calc_history');
+              try {
+                localStorage.removeItem('calc_history');
+              } catch (e) {
+                console.warn('Failed to clear localStorage', e);
+              }
             }}
             onSelect={handleSelectHistoryItem}
           />
