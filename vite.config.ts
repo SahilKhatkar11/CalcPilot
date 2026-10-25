@@ -5,8 +5,8 @@ import fs from 'fs';
 import { defineConfig } from 'vite';
 
 export default defineConfig(({ command }) => {
-  // If running local dev server (command === 'serve'), use './' so port 3000 / AI Studio preview works directly
-  // When building for GitHub Pages, use BASE_PATH if set by actions/configure-pages, or default to '/CalcPilot/'
+  // If running local development server (command === 'serve'), use relative './'
+  // When building for GitHub Pages, use BASE_PATH if set by actions/configure-pages, or default to repository path '/CalcPilot/'
   const isDev = command === 'serve';
   const rawBasePath = process.env.BASE_PATH;
   const base = isDev
